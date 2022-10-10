@@ -6,7 +6,6 @@ import enums.Qualification;
 import enums.Role;
 import enums.Sex;
 import exceptions.AccessDenialException;
-import services.ApplicantService;
 
 public class Staff extends Person implements ManagerInterface, CashierInterface {
 
@@ -85,10 +84,10 @@ public class Staff extends Person implements ManagerInterface, CashierInterface 
             if(customer.buyProduct(store).equals("Product purchased successfully")){
                 for(int i =0; i< store.getProductsList().size(); i++){
                    if(store.getProductsList().get(i).getProductName().equals(customer.getProductName().toLowerCase())){
-                       sellStatus.append(customer.getQty()).append(" units of ").append(customer.getProductName()).append(" sold. \n\n"//;
+                       sellStatus.append(customer.getTotalCartQty()).append(" units of ").append(customer.getProductName()).append(" sold. \n\n"//;
                        ).append(receipt.printReceipt(store, staff, customer));
 
-                       store.getProductsList().get(i).setQuantity(store.getProductsList().get(i).getQuantity() - customer.getQty());
+                       store.getProductsList().get(i).setQuantity(store.getProductsList().get(i).getQuantity() - customer.getTotalCartQty());
                    }
 
                     if (store.getProductsList().get(i).getQuantity() == 0) {

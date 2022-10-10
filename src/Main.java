@@ -7,8 +7,7 @@ import services.ProductFileReaderService;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 
@@ -45,35 +44,27 @@ public class Main {
 
 
 
-
+        //Add items to customer1 one Cart-------------------------------------------------------------------------
         cartProduct.add(new Item("milo", 20));
         cartProduct.add(new Item("monster", 5));
         cartProduct.add(new Item("orijin", 2));
         cartProduct.add(new Item("tissue paper", 20));
 
 
-
+        //Add items to customer2 one Cart-------------------------------------------------------------------------
         cartProduct1.add(new Item("battery", 30));
         cartProduct1.add(new Item("spoon", 15));
         cartProduct1.add(new Item("knife", 2));
         cartProduct1.add(new Item("sugar", 5));
-        System.out.println(customer1.getProductCart());
+//        System.out.println(customer1.getPurchaseCart());
 
 
-//        customer1.setProductCart(cartProduct);
-//        customer2.setProductCart(cartProduct1);
+        //Setting the Array values to customers Cart-----------------------------------------------------------------------
+        customer1.setPurchaseCart(cartProduct);
+        customer2.setPurchaseCart(cartProduct1);
 
-
-//        customerQueue.add(customer1.getProductCart());
-//        customerQueue.add(customer2.getProductCart());
-
-//
-
-
-        customer1.setProductCart(cartProduct);
-        customer2.setProductCart(cartProduct1);
-
-        PriorityQueue<Customer> customerQueue = new PriorityQueue<>((c1, c2) -> c1.getQty().compareTo(c2.getQty()));
+        //Adding the customers to Priority Queue which is a field in the Store entity--------------------------------------
+        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(Comparator.comparing(Customer::getTotalCartQty));
 
         customerQueue.add(customer1);
         customerQueue.add(customer2);
@@ -83,17 +74,11 @@ public class Main {
 //        System.out.println(customer1.getProductCart());
 //        System.out.println(customer2.getProductCart());
 
-//        System.out.println(customerQueue);
         System.out.println(store1.getCustomerQueue());
-//        System.out.println(customer1.getQty());
 
-//        for(Object item : customer1.getProductCart()){
-//            System.out.println();
-//        }
-//
-//        for(Object item : customer2.getProductCart()){
-//            System.out.println("Product name: " + item);
-//        }
+
+
+
 
 //        System.out.println(customer2.buyProduct(store1));
 //        System.out.println(staff2.sellProduct(store1, staff2, customer2) + "\n");

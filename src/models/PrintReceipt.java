@@ -113,8 +113,8 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
                     for(int i = 0; i<availableProduct.size(); i++) {
                         if (customer.getProductName().toLowerCase().equals(availableProduct.get(i).getProductName()))
                             return "RECEIPT \n" + "--------------------- \n" + "Date: " + dateTime + "\nSlip Number: " + slipNumber + "\n\n"
-                                    + "Item name: " + availableProduct.get(i).getProductName() + "  Qty: " + customer.getQty() +
-                                    "   Rate: " + availableProduct.get(i).getRatePerUnit() + "     Total: " + (availableProduct.get(i).getRatePerUnit() * customer.getQty()) +
+                                    + "Item name: " + availableProduct.get(i).getProductName() + "  Qty: " + customer.getTotalCartQty() +
+                                    "   Rate: " + availableProduct.get(i).getRatePerUnit() + "     Total: " + (availableProduct.get(i).getRatePerUnit() * customer.getTotalCartQty()) +
                                     "\nCashier: " + staff.getName() + "\n \nGOODS BOUGHT IN GOOD CONDITION ARE NOT RETURNABLE \n"
                                     + "Thanks for your patronage!";
 

@@ -87,8 +87,7 @@ public class Store {
                 "id=" + id +
                 ", name='" + storeName + '\'' +
                 ", staffList=" + staffList +
-                ", productsList=" + productsList +
-                '}';
+                " productsList=" + productsList;
     }
 
 
