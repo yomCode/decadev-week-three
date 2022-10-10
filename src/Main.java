@@ -69,7 +69,7 @@ public class Main {
         Item item5 = new Item("milk", 35);
         Item item6 = new Item("spoon", 15);
         Item item7 = new Item("knife", 2);
-        Item item8 = new Item("sugar", 30);
+        Item item8 = new Item("sugar", 25);
 
         customerService.addToCart(store1, item5, customer2);
         customerService.addToCart(store1, item6, customer2);
@@ -105,9 +105,9 @@ public class Main {
         store1.setCustomerQueue(customerQueue);
 
         //Printing out the queue in order------------------------------------------------------------------------------------------------
-        for(Customer customerOnQueue: store1.getCustomerQueue()){
-            System.out.println(customerOnQueue);
-        }
+//        for(Customer customerOnQueue: store1.getCustomerQueue()){
+//            System.out.println(customerOnQueue);
+//        }
 
 //        cashier.sellProduct(store1, staff3, customer1, customerService);
 //        cashier.sellProduct(store1, staff3, customer2, customerService);
@@ -124,6 +124,10 @@ public class Main {
 //        System.out.println(staff2.sellProduct(store1, staff2, customer2) + "\n");
 //        System.out.println(customer2.buyProduct(store1));
 
+        for(Products products : store1.getProductsList()){
+
+            System.out.println(products);
+        }
 
     }
 }

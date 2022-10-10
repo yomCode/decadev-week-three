@@ -28,18 +28,6 @@ public class Products{
     }
 
     //GETTERS & SETTERS------------------------------------------------------------------>
-
-
-    public StringBuilder getStatus() {
-        return status;
-    }
-
-    public void setStatus(StringBuilder status) {
-       this.status = status;
-
-    }
-
-
     public Long getProductId() {
         return productId;
     }
@@ -80,6 +68,20 @@ public class Products{
         this.quantity = quantity;
     }
 
+    public StringBuilder getStatus() {
+        if(getQuantity() > 0){
+            return status = new StringBuilder("AVAILABLE");
+        }else{
+            return status = new StringBuilder("OUT OF STOCK");
+        }
+
+    }
+
+    public void setStatus(StringBuilder status) {
+        this.status = status;
+
+    }
+
 
     @Override
     public String toString() {
@@ -89,7 +91,7 @@ public class Products{
                 ", category='" + category + '\'' +
                 ", ratePerUnit=" + ratePerUnit +
                 ", quantity=" + quantity +
-                ", status='" + status + '\'' +
+                ", status='" + getStatus() + '\'' +
                 '}';
     }
 }
