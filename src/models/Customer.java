@@ -5,12 +5,12 @@ import enums.Qualification;
 import enums.Sex;
 import java.util.*;
 
-public class Customer extends Person implements CustomerInterface {
+public class Customer extends Person {
 
     //FIELDS------------------------------------------------------------------>
     private String productName;
     private Integer customerId;
-    private Double cashPaid;
+    private Double cashAvailable;
     private Integer totalCartQty;
     private List<Item> purchaseCart;
 
@@ -23,48 +23,53 @@ public class Customer extends Person implements CustomerInterface {
     }
 
     public Customer(Double cashPaid, Integer qty) {
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashPaid;
 
         this.totalCartQty = qty;
 
     }
 
-    public Customer(String productName, Double cashPaid, Integer qty, ArrayList<Item> productCart) {
+    public Customer(String productName, Double cashAvailable, Integer qty, ArrayList<Item> productCart) {
         this.productName = productName;
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashAvailable;
         this.totalCartQty = qty;
         this.purchaseCart = productCart;
     }
 
-    public Customer(Integer customerId, ArrayList<Item> productCart, Double cashPaid) {
+    public Customer(Integer customerId, ArrayList<Item> productCart, Double cashAvailable) {
         this.customerId = customerId;
         this.purchaseCart = productCart;
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashAvailable;
     }
 
-    public Customer(Integer id, String productName, Double cashPaid, Integer qty, ArrayList<Item> productCart) {
+    public Customer(Integer id, Double cashAvailable){
+        this.customerId = id;
+        this.cashAvailable = cashAvailable;
+    }
+
+    public Customer(Integer id, String productName, Double cashAvailable, Integer qty, ArrayList<Item> productCart) {
         super(id);
         this.productName = productName;
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashAvailable;
         this.totalCartQty = qty;
         this.purchaseCart = productCart;
     }
 
-    public Customer(Integer id, String name, Integer age, Sex sex, Qualification qualification, String email, Double cashPaid, Double balance, Integer qty) {
+    public Customer(Integer id, String name, Integer age, Sex sex, Qualification qualification, String email, Double cashAvailable, Integer qty) {
         super(id, name, age, sex, qualification, email);
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashAvailable;
         this.totalCartQty = qty;
     }
 
-    public Customer(Integer id, Double cashPaid, Integer qty) {
+    public Customer(Integer id, Double cashAvailable, Integer qty) {
         super(id);
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashAvailable;
         this.totalCartQty = qty;
     }
 
-    public Customer(int id, double cashPaid, String productName, int qty) {
+    public Customer(int id, double cashAvailable, String productName, int qty) {
         super(id);
-        this.cashPaid = cashPaid;
+        this.cashAvailable = cashAvailable;
         this.productName = productName;
         this.totalCartQty = qty;
     }
@@ -72,21 +77,21 @@ public class Customer extends Person implements CustomerInterface {
     //GETTERS & SETTERS------------------------------------------------------------------>
 
 
-    public Double getCashPaid() {
-        return cashPaid;
+    public Double getCashAvailable() {
+        return cashAvailable;
     }
 
-    public void setCashPaid(Double cashPaid) {
-        this.cashPaid = cashPaid;
+    public void setCashAvailable(Double cashAvailable) {
+        this.cashAvailable = cashAvailable;
     }
 
     public Integer getTotalCartQty() {
-        Integer totalQty = 0;
+        totalCartQty = 0;
         for(int i = 0; i< purchaseCart.size(); i++){
-           totalQty += purchaseCart.get(i).getItemQty();
+           totalCartQty += purchaseCart.get(i).getItemQty();
         }
 
-        return totalQty;
+        return totalCartQty;
     }
 
     public void setTotalCartQty(Integer totalCartQty) {
@@ -120,42 +125,12 @@ public class Customer extends Person implements CustomerInterface {
 
     @Override
     public String toString() {
-        return "Customer Id: " + customerId +
-                " cashPaid: " + cashPaid +
+        return "CustomerId: " + customerId +
+                " cashPaid: " + cashAvailable +
                 "  Shopping Cart" + purchaseCart;
     }
 
 
-
-    //buyProduct METHOD OF CASHIER------------------------------------------------------------------>
-    @Override
-    public String buyProduct(Store store){
-        List<Products> availableProducts = store.getProductsList();
-
-        for(int i = 0; i< availableProducts.size(); i++){
-            //Check if product is available on the available product list------------------------------
-            if(availableProducts.get(i).getProductName().equalsIgnoreCase(this.getProductName())){
-                //Check if selected product is in stock------------------------------------------------------------------
-                if(availableProducts.get(i).getQuantity() <= 0) return "OUT OF STOCK!";
-                //Check if there is enough quantity to serve the customer's need-----------------------------------------
-                if(availableProducts.get(i).getQuantity() > 0 && availableProducts.get(i).getQuantity() >= this.getTotalCartQty()){
-                    //Check if customer have enough cash to pay for the product-------------------------------------------
-                        if((availableProducts.get(i).getRatePerUnit()* this.getTotalCartQty()) <= getCashPaid()){
-
-                            return "Product purchased successfully";
-
-                        }else{
-                            return "Insufficient balance to complete purchase";
-                        }
-
-                    }else{
-                        return "Enter a lower quantity";
-                    }
-            }
-
-        }
-        return "Product is not available";
-    }
 
 
 }

@@ -4,6 +4,8 @@ import Interfaces.PrintReceiptInterface;
 import enums.Qualification;
 import enums.Role;
 import enums.Sex;
+import services.CustomerServiceImpl;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,8 +44,8 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
         this.product = product;
     }
 
-    public PrintReceipt(Integer id, String name, Integer age, Sex sex, Qualification qualification, String email, Double cashPaid, Double balance, Integer qty, LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
-        super(id, name, age, sex, qualification, email, cashPaid, balance, qty);
+    public PrintReceipt(Integer id, String name, Integer age, Sex sex, Qualification qualification, String email, Double cashAvailable, Integer qty, LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
+        super(id, name, age, sex, qualification, email, cashAvailable, qty);
         this.dateTime = dateTime;
         this.customer = customer;
         this.slipNumber = slipNumber;
@@ -102,14 +104,14 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
     }
 
     @Override
-    public  String printReceipt(Store store, Staff staff, Customer customer){
+    public  String printReceipt(Store store, Staff staff, Customer customer, CustomerServiceImpl customerService){
         LocalDate dateTime = LocalDate.now();
         slipNumber = 0; //(int) (Math.random() * 1_000_000);
         List<Products> availableProduct = store.getProductsList();
 
         if(staff.getRole().equals(Role.CASHIER)){
 
-                if(customer.buyProduct(store).equals("Product purchased successfully")){
+                if(customerService.buyProduct(store, customer).equals("Product purchased successfully")){
                     for(int i = 0; i<availableProduct.size(); i++) {
                         if (customer.getProductName().toLowerCase().equals(availableProduct.get(i).getProductName()))
                             return "RECEIPT \n" + "--------------------- \n" + "Date: " + dateTime + "\nSlip Number: " + slipNumber + "\n\n"

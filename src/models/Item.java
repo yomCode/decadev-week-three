@@ -1,6 +1,11 @@
 package models;
 
-public class Item {
+import services.ProductFileReaderService;
+
+import java.io.IOException;
+import java.util.List;
+
+public class Item extends Store{
 
     private String itemName;
     private Integer itemQty;
@@ -41,9 +46,21 @@ public class Item {
 
     @Override
     public String toString() {
+        ProductFileReaderService read = new ProductFileReaderService();
+        try {
+            super.setProductsList(read.productList());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        price = 0.0;
+        List<Products> list = super.getProductsList();
+        for(int i = 0; i< list.size(); i++){
+            if(super.getProductsList().get(i).getProductName().equalsIgnoreCase(getItemName())) price = itemQty * list.get(i).getRatePerUnit();
 
+        }
         return "ItemName: " + itemName +
-                "  ItemQty: " + itemQty;
+                "  ItemQty: " + itemQty +
+                "  Price: " + price;
     }
 
 

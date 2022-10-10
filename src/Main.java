@@ -3,6 +3,9 @@ import enums.Qualification;
 import enums.Role;
 import enums.Sex;
 import models.*;
+import services.CashierServiceImpl;
+import services.CustomerServiceImpl;
+import services.ManagerServiceImpl;
 import services.ProductFileReaderService;
 
 import java.io.IOException;
@@ -18,6 +21,9 @@ public class Main {
         Staff staff1 = new Staff( 12,"Hakeem Adewale", 45, Sex.MALE, Qualification.MSC, "Adewale@gmail.com", Role.MANAGER);
         Staff staff2 = new Staff ( 323, "Adeola Johnson", 20, Sex.FEMALE, Qualification.BSC, "Adeola123@gmail.com", Role.CASHIER);
         Staff staff3 = new Staff(324, "Alex Austin",23, Sex.MALE, Qualification.HND, "alex123@gmail.com", Role.CASHIER);
+
+        ManagerServiceImpl manager = new ManagerServiceImpl();
+        CashierServiceImpl cashier = new CashierServiceImpl();
 
         //Instances of Applicants-------------------------------------------------------------------------------------------------
         Applicant applicant1 = new Applicant(2332, "Ronke George", 26, Sex.FEMALE, Qualification.HND,
@@ -38,45 +44,69 @@ public class Main {
         //Customer instances-------------------------------------------------------------------------------------
         ArrayList<Item> cartProduct = new ArrayList<>();
         ArrayList<Item> cartProduct1 = new ArrayList<>();
+        ArrayList<Item> cartProduct2 = new ArrayList<>();
 
-        Customer customer1 = new Customer(2,cartProduct, 10000.00);
+
+        Customer customer1 = new Customer(2,cartProduct, 10000.0);
         Customer customer2 = new Customer(1, cartProduct1, 50000.0);
+        Customer customer3 = new Customer(3, cartProduct2, 20000.0);
 
-
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
 
         //Add items to customer1 one Cart-------------------------------------------------------------------------
-        cartProduct.add(new Item("milo", 20));
-        cartProduct.add(new Item("monster", 5));
-        cartProduct.add(new Item("orijin", 2));
-        cartProduct.add(new Item("tissue paper", 20));
+        Item item1 = new Item("milo", 30);
+        Item item2 = new Item("monster", 5);
+        Item item3 = new Item("orijin", 2);
+        Item item4 = new Item("tissue paper", 20);
 
+        customerService.addToCart(store1, item1, customer1);
+        customerService.addToCart(store1, item2, customer1);
+        customerService.addToCart(store1, item3, customer1);
+        customerService.addToCart(store1, item4, customer1);
 
         //Add items to customer2 one Cart-------------------------------------------------------------------------
-        cartProduct1.add(new Item("battery", 30));
-        cartProduct1.add(new Item("spoon", 15));
-        cartProduct1.add(new Item("knife", 2));
-        cartProduct1.add(new Item("sugar", 5));
+        Item item5 = new Item("milk", 30);
+        Item item6 = new Item("spoon", 15);
+        Item item7 = new Item("knife", 2);
+        Item item8 = new Item("sugar", 30);
+
+        customerService.addToCart(store1, item5, customer2);
+        customerService.addToCart(store1, item6, customer2);
+        customerService.addToCart(store1, item7, customer2);
+        customerService.addToCart(store1, item8, customer2);
+
+        //Add items to customer2 one Cart-------------------------------------------------------------------------
+        Item item9 = new Item("sanitary pad", 5);
+        Item item10 = new Item("orijin", 10);
+        Item item11 = new Item("milk", 5);
+        Item item12 = new Item("peeler", 2);
+
+        customerService.addToCart(store1, item9, customer3);
+        customerService.addToCart(store1, item10, customer3);
+        customerService.addToCart(store1, item11, customer3);
+        customerService.addToCart(store1, item12, customer3);
+
 //        System.out.println(customer1.getPurchaseCart());
 
 
-        //Setting the Array values to customers Cart-----------------------------------------------------------------------
+        //Setting the Array values to customers Cart-----------------------------------------------------------------------------------
         customer1.setPurchaseCart(cartProduct);
         customer2.setPurchaseCart(cartProduct1);
+        customer3.setPurchaseCart(cartProduct2);
 
-        //Adding the customers to Priority Queue which is a field in the Store entity--------------------------------------
+        //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
         PriorityQueue<Customer> customerQueue = new PriorityQueue<>(Comparator.comparing(Customer::getTotalCartQty));
 
         customerQueue.add(customer1);
         customerQueue.add(customer2);
+        customerQueue.add(customer3);
 
-        store1.setCustomerQueue(customerQueue);
+        //Printing out the queue in order------------------------------------------------------------------------------------------------
+        for(Customer queue: customerQueue){
+            System.out.println(queue);
+        }
 
-//        System.out.println(customer1.getProductCart());
-//        System.out.println(customer2.getProductCart());
-
-        System.out.println(store1.getCustomerQueue());
-
-
+//        store1.setCustomerQueue(customerQueue);
 
 
 

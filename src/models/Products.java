@@ -3,7 +3,7 @@ package models;
 import enums.Category;
 
 public class Products{
-    //FIELDS--------------------------------------------------------------------->
+    //FIELDS---------------------------------------------------------------------------------------->
     private Long productId;
     private String productName;
     private Category category;

@@ -1,11 +1,12 @@
 package services;
+import Interfaces.ProductFileReaderInterface;
 import enums.Category;
 import models.Products;
 
 import java.io.*;
 import java.util.*;
 import java.lang.*;
-public class ProductFileReaderService {
+public class ProductFileReaderService implements ProductFileReaderInterface {
    public List<Products> productList() throws IOException {
 
        List<Products> productsListArray = new ArrayList<>();
