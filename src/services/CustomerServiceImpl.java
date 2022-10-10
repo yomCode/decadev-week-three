@@ -19,7 +19,11 @@ public class CustomerServiceImpl implements CustomerInterface {
     public Products addToCart(Store store, Item item, Customer customer){
         for(int i = 0; i< store.getProductsList().size(); i++){
             Products eachProduct = store.getProductsList().get(i);
-            if(eachProduct.getProductName().equalsIgnoreCase(item.getItemName()) && eachProduct.getQuantity() >= item.getItemQty()) customer.getPurchaseCart().add(item);
+            if(eachProduct.getProductName().equalsIgnoreCase(item.getItemName()) && eachProduct.getQuantity() >= item.getItemQty()) {
+                customer.getPurchaseCart().add(item);
+                eachProduct.setQuantity(eachProduct.getQuantity() - item.getItemQty());
+
+            }
         }
 
         return null;

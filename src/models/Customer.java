@@ -12,6 +12,7 @@ public class Customer extends Person {
     private Integer customerId;
     private Double cashAvailable;
     private Integer totalCartQty;
+    private Double totalCost;
     private List<Item> purchaseCart;
 
 
@@ -94,10 +95,6 @@ public class Customer extends Person {
         return totalCartQty;
     }
 
-    public void setTotalCartQty(Integer totalCartQty) {
-        this.totalCartQty = totalCartQty;
-    }
-
     public String getProductName() {
         return productName;
     }
@@ -106,21 +103,36 @@ public class Customer extends Person {
         this.productName = productName;
     }
 
-    public List<Item> getPurchaseCart() {
-        return purchaseCart;
-    }
-
-    public void setPurchaseCart(ArrayList<Item> purchaseCart) {
-        this.purchaseCart = purchaseCart;
-    }
-
-
     public Integer getCustomerId() {
         return customerId;
     }
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public void setTotalCartQty(Integer totalCartQty) {
+        this.totalCartQty = totalCartQty;
+    }
+
+    public Double getTotalCost() {
+        totalCost = 0.0;
+        for(int i = 0; i< this.getPurchaseCart().size(); i++){
+            totalCost += getPurchaseCart().get(i).getPrice();
+        }
+        return totalCost;
+    }
+
+    public void setTotalCost(Double totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public List<Item> getPurchaseCart() {
+        return purchaseCart;
+    }
+
+    public void setPurchaseCart(List<Item> purchaseCart) {
+        this.purchaseCart = purchaseCart;
     }
 
     @Override

@@ -47,13 +47,14 @@ public class Main {
         ArrayList<Item> cartProduct2 = new ArrayList<>();
 
 
-        Customer customer1 = new Customer(2,cartProduct, 10000.0);
-        Customer customer2 = new Customer(1, cartProduct1, 50000.0);
+        Customer customer1 = new Customer(2,cartProduct, 15000.0);
+        Customer customer2 = new Customer(1, cartProduct1, 5000.0);
         Customer customer3 = new Customer(3, cartProduct2, 20000.0);
+
 
         CustomerServiceImpl customerService = new CustomerServiceImpl();
 
-        //Add items to customer1 one Cart-------------------------------------------------------------------------
+        //Add items to customer1 Cart-------------------------------------------------------------------------
         Item item1 = new Item("milo", 30);
         Item item2 = new Item("monster", 5);
         Item item3 = new Item("orijin", 2);
@@ -64,8 +65,8 @@ public class Main {
         customerService.addToCart(store1, item3, customer1);
         customerService.addToCart(store1, item4, customer1);
 
-        //Add items to customer2 one Cart-------------------------------------------------------------------------
-        Item item5 = new Item("milk", 30);
+        //Add items to customer2 Cart-------------------------------------------------------------------------
+        Item item5 = new Item("milk", 35);
         Item item6 = new Item("spoon", 15);
         Item item7 = new Item("knife", 2);
         Item item8 = new Item("sugar", 30);
@@ -75,7 +76,7 @@ public class Main {
         customerService.addToCart(store1, item7, customer2);
         customerService.addToCart(store1, item8, customer2);
 
-        //Add items to customer2 one Cart-------------------------------------------------------------------------
+        //Add items to customer3 Cart-------------------------------------------------------------------------
         Item item9 = new Item("sanitary pad", 5);
         Item item10 = new Item("orijin", 10);
         Item item11 = new Item("milk", 5);
@@ -101,12 +102,21 @@ public class Main {
         customerQueue.add(customer2);
         customerQueue.add(customer3);
 
+        store1.setCustomerQueue(customerQueue);
+
         //Printing out the queue in order------------------------------------------------------------------------------------------------
-        for(Customer queue: customerQueue){
-            System.out.println(queue);
+        for(Customer customerOnQueue: store1.getCustomerQueue()){
+            System.out.println(customerOnQueue);
         }
 
-//        store1.setCustomerQueue(customerQueue);
+//        cashier.sellProduct(store1, staff3, customer1, customerService);
+//        cashier.sellProduct(store1, staff3, customer2, customerService);
+
+//        for(Customer queue: store1.getCustomerQueue()){
+//            System.out.println(queue);
+//        }
+
+//        System.out.println(customer1.getTotalCost());
 
 
 

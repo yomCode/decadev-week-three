@@ -35,17 +35,7 @@ public class Item extends Store{
         this.itemQty = itemQty;
     }
 
-
-    public Products getProducts() {
-        return products;
-    }
-
-    public void setProducts(Products products) {
-        this.products = products;
-    }
-
-    @Override
-    public String toString() {
+    public Double getPrice() {
         ProductFileReaderService read = new ProductFileReaderService();
         try {
             super.setProductsList(read.productList());
@@ -58,9 +48,16 @@ public class Item extends Store{
             if(super.getProductsList().get(i).getProductName().equalsIgnoreCase(getItemName())) price = itemQty * list.get(i).getRatePerUnit();
 
         }
+
+        return price;
+    }
+
+    @Override
+    public String toString() {
+
         return "ItemName: " + itemName +
                 "  ItemQty: " + itemQty +
-                "  Price: " + price;
+                "  Price: " + getPrice();
     }
 
 

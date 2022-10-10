@@ -2,6 +2,7 @@ package services;
 
 import Interfaces.CashierInterface;
 import enums.Role;
+import exceptions.AccessDenialException;
 import models.Customer;
 import models.PrintReceipt;
 import models.Staff;
@@ -15,31 +16,32 @@ public class CashierServiceImpl implements CashierInterface {
 
         StringBuilder sellStatus = new StringBuilder();
 
-        if(staff.getRole().equals(Role.CASHIER)){
-            if(customerService.buyProduct(store, customer).equals("Product purchased successfully")){
-                for(int i =0; i< store.getProductsList().size(); i++){
-                    if(store.getProductsList().get(i).getProductName().equals(customer.getProductName().toLowerCase())){
-                        sellStatus.append(customer.getTotalCartQty()).append(" units of ").append(customer.getProductName()).append(" sold. \n\n"//;
-                        ).append(receipt.printReceipt(store, staff, customer, customerService));
-
-                        store.getProductsList().get(i).setQuantity(store.getProductsList().get(i).getQuantity() - customer.getTotalCartQty());
-                    }
-
-                    if (store.getProductsList().get(i).getQuantity() == 0) {
-                        store.getProductsList().get(i).setStatus(new StringBuilder("OUT OF STOCK!"));
-                    } else {
-                        store.getProductsList().get(i).setStatus(new StringBuilder("AVAILABLE"));
-                    }
-
-                }
-
-            }else{
-                sellStatus.append("Product not sold");
-            }
-
-        }else{
-            sellStatus.append("Access Denied!");
-        }
+//        if(staff.getRole().equals(Role.CASHIER)){
+//            for(int i = 0; i< store.getCustomerQueue().size(); i++) {
+//                for (int j = 0; j < store.getProductsList().size(); j++) {
+//                    if (store.getProductsList().get(i).getProductName().equalsIgnoreCase(customer.getPurchaseCart().get(i).getItemName())) {
+//                        if (store.getCustomerQueue().element().getCashAvailable() >= customer.getTotalCost()) {
+//                            store.getCustomerQueue().poll();
+//                            for(int k = 0; k< customer.getPurchaseCart().size(); k++){
+//
+//                            }
+//                        }
+//
+//                    }
+//
+//                    if (store.getProductsList().get(i).getQuantity() == 0) {
+//                        store.getProductsList().get(i).setStatus(new StringBuilder("OUT OF STOCK!"));
+//                    } else {
+//                        store.getProductsList().get(i).setStatus(new StringBuilder("AVAILABLE"));
+//                    }
+//
+//                }
+//
+//            }
+//
+//        }else{
+//            throw new AccessDenialException("Access Denied!");
+       // }
         return sellStatus.toString();
     }
 }
