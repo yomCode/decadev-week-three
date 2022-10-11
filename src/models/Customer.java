@@ -1,11 +1,10 @@
 package models;
 
-import Interfaces.*;
 import enums.Qualification;
 import enums.Sex;
 import java.util.*;
 
-public class Customer extends Person {
+public class Customer extends Person{
 
     //FIELDS------------------------------------------------------------------>
     private String productName;
@@ -82,9 +81,6 @@ public class Customer extends Person {
         return cashAvailable;
     }
 
-    public void setCashAvailable(Double cashAvailable) {
-        this.cashAvailable = cashAvailable;
-    }
 
     public Integer getTotalCartQty() {
         totalCartQty = 0;
@@ -99,21 +95,6 @@ public class Customer extends Person {
         return productName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    public void setTotalCartQty(Integer totalCartQty) {
-        this.totalCartQty = totalCartQty;
-    }
 
     public Double getTotalCost() {
         totalCost = 0.0;
@@ -121,10 +102,6 @@ public class Customer extends Person {
             totalCost += getPurchaseCart().get(i).getPrice();
         }
         return totalCost;
-    }
-
-    public void setTotalCost(Double totalCost) {
-        this.totalCost = totalCost;
     }
 
     public List<Item> getPurchaseCart() {

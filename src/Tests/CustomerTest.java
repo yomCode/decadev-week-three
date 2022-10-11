@@ -1,7 +1,7 @@
 //package Tests;
 //
 //import models.Customer;
-//import services.ProductFileReaderService;
+//import models.ProductFileReaderService;
 //import models.Store;
 //import org.junit.jupiter.api.Test;
 //import java.io.IOException;
@@ -10,7 +10,7 @@
 //
 //class CustomerTest {
 //
-//    ProductFileReaderService read = new ProductFileReaderService();
+//    models.ProductFileReaderService read = new models.ProductFileReaderService();
 //
 //    Store newStore = new Store();
 //

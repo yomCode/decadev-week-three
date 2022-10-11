@@ -6,11 +6,9 @@ import models.*;
 import services.CashierServiceImpl;
 import services.CustomerServiceImpl;
 import services.ManagerServiceImpl;
-import services.ProductFileReaderService;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 
@@ -47,9 +45,9 @@ public class Main {
         ArrayList<Item> cartProduct2 = new ArrayList<>();
 
 
-        Customer customer1 = new Customer(2,cartProduct, 15000.0);
-        Customer customer2 = new Customer(1, cartProduct1, 5000.0);
-        Customer customer3 = new Customer(3, cartProduct2, 20000.0);
+        Customer customer1 = new Customer(1,cartProduct, 100000.0);
+        Customer customer2 = new Customer(2, cartProduct1, 50000.0);
+        Customer customer3 = new Customer(3, cartProduct2, 2000.0);
 
 
         CustomerServiceImpl customerService = new CustomerServiceImpl();
@@ -87,7 +85,6 @@ public class Main {
         customerService.addToCart(store1, item11, customer3);
         customerService.addToCart(store1, item12, customer3);
 
-//        System.out.println(customer1.getPurchaseCart());
 
 
         //Setting the Array values to customers Cart-----------------------------------------------------------------------------------
@@ -96,7 +93,7 @@ public class Main {
         customer3.setPurchaseCart(cartProduct2);
 
         //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
-        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(Comparator.comparing(Customer::getTotalCartQty));
+        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(store1);
 
         customerQueue.add(customer1);
         customerQueue.add(customer2);
@@ -104,30 +101,21 @@ public class Main {
 
         store1.setCustomerQueue(customerQueue);
 
-        //Printing out the queue in order------------------------------------------------------------------------------------------------
-//        for(Customer customerOnQueue: store1.getCustomerQueue()){
-//            System.out.println(customerOnQueue);
-//        }
-
-//        cashier.sellProduct(store1, staff3, customer1, customerService);
-//        cashier.sellProduct(store1, staff3, customer2, customerService);
-
-//        for(Customer queue: store1.getCustomerQueue()){
-//            System.out.println(queue);
-//        }
-
-//        System.out.println(customer1.getTotalCost());
-
-
-
-//        System.out.println(customer2.buyProduct(store1));
-//        System.out.println(staff2.sellProduct(store1, staff2, customer2) + "\n");
-//        System.out.println(customer2.buyProduct(store1));
-
-        for(Products products : store1.getProductsList()){
-
-            System.out.println(products);
+        for(Products product : store1.getProductsList()){
+            System.out.println(product);
         }
+
+
+        System.out.println(cashier.sellProduct(store1, staff2));
+
+        for(Customer queue: store1.getCustomerQueue()){
+            System.out.println(queue);
+        }
+
+        for(Products product : store1.getProductsList()){
+            System.out.println(product);
+        }
+
 
     }
 }

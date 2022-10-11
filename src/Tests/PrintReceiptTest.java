@@ -7,7 +7,7 @@
 //import enums.Sex;
 //import models.*;
 //import org.junit.jupiter.api.Test;
-//import services.ProductFileReaderService;
+//import models.ProductFileReaderService;
 //
 //import java.io.IOException;
 //import java.time.LocalDate;
@@ -17,7 +17,7 @@
 //
 //class PrintReceiptTest {
 //    Store newStore = new Store();
-//    ProductFileReaderService read =  new ProductFileReaderService();
+//    models.ProductFileReaderService read =  new models.ProductFileReaderService();
 //
 //    PrintReceipt receipt = new PrintReceipt();
 //

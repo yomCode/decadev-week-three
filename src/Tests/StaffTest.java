@@ -5,7 +5,7 @@
 //import enums.Sex;
 //import models.*;
 //import org.junit.jupiter.api.Test;
-//import services.ProductFileReaderService;
+//import models.ProductFileReaderService;
 //
 //import java.io.IOException;
 //
@@ -26,7 +26,7 @@
 //    //Products instances--------------------------------------------------------------------------------------------------------------->
 //    Store newStore = new Store();
 //
-//    ProductFileReaderService read = new ProductFileReaderService();
+//    models.ProductFileReaderService read = new models.ProductFileReaderService();
 //
 //
 //

@@ -1,7 +1,7 @@
-package services;
+package models;
+
 import Interfaces.ProductFileReaderInterface;
 import enums.Category;
-import models.Products;
 
 import java.io.*;
 import java.util.*;

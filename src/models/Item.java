@@ -1,7 +1,5 @@
 package models;
 
-import services.ProductFileReaderService;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -10,7 +8,10 @@ public class Item extends Store{
     private String itemName;
     private Integer itemQty;
     private Double price;
-    private Products products;
+
+
+    public Item() {
+    }
 
     public Item(String itemName, Integer itemQty) {
         this.itemName = itemName;
@@ -23,16 +24,9 @@ public class Item extends Store{
         return itemName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
 
     public Integer getItemQty() {
         return itemQty;
-    }
-
-    public void setItemQty(Integer itemQty) {
-        this.itemQty = itemQty;
     }
 
     public Double getPrice() {

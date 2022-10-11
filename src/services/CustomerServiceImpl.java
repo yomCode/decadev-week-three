@@ -25,14 +25,12 @@ public class CustomerServiceImpl implements CustomerInterface {
             // and also if the product has enough quantity to meet customer's need------------------------>
             if(eachProduct.getProductName().equalsIgnoreCase(item.getItemName())
                     && eachProduct.getQuantity() >= item.getItemQty()) {
-                //If product exist and there is enough quantity, then ass to the customer cart-------------------------
+                //If product exist and there is enough quantity, then add to the customer cart-------------------------
                 customer.getPurchaseCart().add(item);
                 //After adding, the quantity of such product should be updated to ensure,
                 // the next customer does select out of stock product-----------------------------------------------
                 eachProduct.setQuantity(eachProduct.getQuantity() - item.getItemQty());
 
-            }else{
-                throw new ProductIsNotAvaialbleEception("Product is not available, kindly check other available products");
             }
         }
 
