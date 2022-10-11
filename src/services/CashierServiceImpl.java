@@ -16,15 +16,17 @@ public class CashierServiceImpl implements CashierInterface {
         if(staff.getRole().equals(Role.CASHIER)){
             while(store.getCustomerQueue().iterator().hasNext()) {
                 if (store.getCustomerQueue().element().getCashAvailable() >= store.getCustomerQueue().element().getTotalCost()) {
-                    store.getCustomerQueue().remove();
 
-                    sellStatus += "Product sold to customer\n\n";
+                    sellStatus += "Product sold to customer" + store.getCustomerQueue().element().getCustomerId() +  "\n\n" + receipt.printReceipt(store, staff, store.getCustomer());
+                    store.getCustomerQueue().remove();
 
                 }else{
                     for (int i = 0; i< store.getProductsList().size(); i++){
                         for (int j = 0; j< store.getCustomerQueue().element().getPurchaseCart().size(); j++){
+                            //Add back the items not purchased back to the store list of products---------------------------------------------------
                             if (store.getProductsList().get(i).getProductName().equalsIgnoreCase(store.getCustomerQueue().element()
-                            .getPurchaseCart().get(j).getItemName())){
+                                .getPurchaseCart().get(j).getItemName())){
+
                                 store.getProductsList().get(i).setQuantity(store.getProductsList().get(i).getQuantity() +
                                 store.getCustomerQueue().element().getPurchaseCart().get(j).getItemQty());
                             }

@@ -31,11 +31,8 @@ public class Item extends Store{
 
     public Double getPrice() {
         ProductFileReaderService read = new ProductFileReaderService();
-        try {
             super.setProductsList(read.productList());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
         price = 0.0;
         List<Products> list = super.getProductsList();
         for(int i = 0; i< list.size(); i++){

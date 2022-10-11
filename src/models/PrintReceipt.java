@@ -104,27 +104,29 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
     }
 
     @Override
-    public  String printReceipt(Store store, Staff staff, Customer customer, CustomerServiceImpl customerService){
+    public  String printReceipt(Store store, Staff staff, Customer customer){
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
         LocalDate dateTime = LocalDate.now();
         slipNumber = 0; //(int) (Math.random() * 1_000_000);
-        List<Products> availableProduct = store.getProductsList();
 
         if(staff.getRole().equals(Role.CASHIER)){
 
-                if(customerService.buyProduct(store, customer).equals("Product purchased successfully")){
-                    for(int i = 0; i<availableProduct.size(); i++) {
-                        if (customer.getProductName().toLowerCase().equals(availableProduct.get(i).getProductName()))
-                            return "RECEIPT \n" + "--------------------- \n" + "Date: " + dateTime + "\nSlip Number: " + slipNumber + "\n\n"
-                                    + "Item name: " + availableProduct.get(i).getProductName() + "  Qty: " + customer.getTotalCartQty() +
-                                    "   Rate: " + availableProduct.get(i).getRatePerUnit() + "     Total: " + (availableProduct.get(i).getRatePerUnit() * customer.getTotalCartQty()) +
+            ProductFileReaderService reader = new ProductFileReaderService();
+            reader.productList();
+                    String items = "";
+
+                        for(int i = 0; i< store.getCustomerQueue().element().getPurchaseCart().size(); i++) {
+                            String itemName = store.getCustomerQueue().element().getPurchaseCart().get(i).getItemName();
+                            Integer itemQty = store.getCustomerQueue().element().getPurchaseCart().get(i).getItemQty();
+                            Double itemPrice = store.getCustomerQueue().element().getPurchaseCart().get(i).getPrice();
+                            items += "Item: " + itemName + "   itemQty: " + itemQty + "   Price: " + itemPrice + "\n";
+                        }
+
+
+                    return "RECEIPT \n" + "--------------------- \n" + "Date: " + dateTime + "\nSlip Number: " + slipNumber + "\n\n"
+                                    + items + "\n    Total: " + store.getCustomerQueue().element().getTotalCost() +
                                     "\nCashier: " + staff.getName() + "\n \nGOODS BOUGHT IN GOOD CONDITION ARE NOT RETURNABLE \n"
-                                    + "Thanks for your patronage!";
-
-                    }
-
-                }else{
-                    return "No product was purchased";
-                }
+                                    + "Thanks for your patronage!\n\n";
 
 
         }

@@ -104,6 +104,14 @@ public class Customer extends Person{
         return totalCost;
     }
 
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
     public List<Item> getPurchaseCart() {
         return purchaseCart;
     }

@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerInterface {
                 //If product exist and there is enough quantity, then add to the customer cart-------------------------
                 customer.getPurchaseCart().add(item);
                 //After adding, the quantity of such product should be updated to ensure,
-                // the next customer does select out of stock product-----------------------------------------------
+                // the next customer does select out of stock product----------------------------------------------------
                 eachProduct.setQuantity(eachProduct.getQuantity() - item.getItemQty());
 
             }
@@ -38,7 +38,7 @@ public class CustomerServiceImpl implements CustomerInterface {
     }
 
 
-    //buyProduct METHOD OF CASHIER------------------------------------------------------------------>
+    //buyProduct METHOD OF CASHIER------------------------------------------------------------------------------------------->
     @Override
     public String buyProduct(Store store, Customer customer){
         List<Products> availableProducts = store.getProductsList();

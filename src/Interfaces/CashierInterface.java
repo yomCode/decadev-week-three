@@ -1,5 +1,6 @@
 package Interfaces;
 
+import models.Customer;
 import models.Staff;
 import models.Store;
 

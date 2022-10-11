@@ -9,6 +9,7 @@ import services.ManagerServiceImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 
@@ -43,11 +44,13 @@ public class Main {
         ArrayList<Item> cartProduct = new ArrayList<>();
         ArrayList<Item> cartProduct1 = new ArrayList<>();
         ArrayList<Item> cartProduct2 = new ArrayList<>();
+        ArrayList<Item> cartProduct3 = new ArrayList<>();
 
 
         Customer customer1 = new Customer(1,cartProduct, 100000.0);
         Customer customer2 = new Customer(2, cartProduct1, 50000.0);
-        Customer customer3 = new Customer(3, cartProduct2, 2000.0);
+        Customer customer3 = new Customer(3, cartProduct2, 20000.0);
+        Customer customer4 = new Customer(4, cartProduct3, 300000.0);
 
 
         CustomerServiceImpl customerService = new CustomerServiceImpl();
@@ -64,7 +67,7 @@ public class Main {
         customerService.addToCart(store1, item4, customer1);
 
         //Add items to customer2 Cart-------------------------------------------------------------------------
-        Item item5 = new Item("milk", 35);
+        Item item5 = new Item("milk", 30);
         Item item6 = new Item("spoon", 15);
         Item item7 = new Item("knife", 2);
         Item item8 = new Item("sugar", 25);
@@ -85,6 +88,16 @@ public class Main {
         customerService.addToCart(store1, item11, customer3);
         customerService.addToCart(store1, item12, customer3);
 
+        Item item13 = new Item("5alive", 25);
+        Item item14 = new Item("monster", 10);
+        Item item15 = new Item("milk", 5);
+        Item item16 = new Item("peeler", 1);
+
+        customerService.addToCart(store1, item13, customer4);
+        customerService.addToCart(store1, item14, customer4);
+        customerService.addToCart(store1, item15, customer4);
+        customerService.addToCart(store1, item16, customer4);
+
 
 
         //Setting the Array values to customers Cart-----------------------------------------------------------------------------------
@@ -95,26 +108,35 @@ public class Main {
         //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
         PriorityQueue<Customer> customerQueue = new PriorityQueue<>(store1);
 
+
         customerQueue.add(customer1);
         customerQueue.add(customer2);
         customerQueue.add(customer3);
+        customerQueue.add(customer4);
 
         store1.setCustomerQueue(customerQueue);
 
-        for(Products product : store1.getProductsList()){
-            System.out.println(product);
-        }
+
+
+//        for(Products product : store1.getProductsList()){
+//            System.out.println(product);
+//        }
 
 
         System.out.println(cashier.sellProduct(store1, staff2));
 
-        for(Customer queue: store1.getCustomerQueue()){
-            System.out.println(queue);
-        }
+//        for(Customer queue: store1.getCustomerQueue()){
+//            System.out.println(queue);
+//        }
 
-        for(Products product : store1.getProductsList()){
-            System.out.println(product);
-        }
+//        for(Products product : store1.getProductsList()){
+//            System.out.println(product);
+//        }
+
+        System.out.println("Customer 2 " + customer2.getTotalCartQty());
+        System.out.println("Customer 1 " + customer1.getTotalCartQty());
+        System.out.println("Customer 4 " + customer4.getTotalCartQty());
+        System.out.println("Customer 3 " + customer3.getTotalCartQty());
 
 
     }

@@ -6,5 +6,5 @@ import models.Store;
 import services.CustomerServiceImpl;
 
 public interface PrintReceiptInterface {
-     String printReceipt(Store store, Staff staff, Customer customer, CustomerServiceImpl customerService);
+     String printReceipt(Store store, Staff staff, Customer customer);
 }
