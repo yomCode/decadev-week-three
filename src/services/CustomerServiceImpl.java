@@ -2,8 +2,7 @@ package services;
 
 import Interfaces.CustomerInterface;
 import models.*;
-
-import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class CustomerServiceImpl implements CustomerInterface {
     @Override
@@ -33,7 +32,7 @@ public class CustomerServiceImpl implements CustomerInterface {
 
     //JOIN THE QUEUE METHOD METHOD OF CUSTOMER------------------------------------------------------------------------------------------->
     @Override
-    public String joinTheQueue(Store store, Customer customer, PriorityQueue<Customer> customerQueue){
+    public String joinTheQueue(Store store, Customer customer, Queue<Customer> customerQueue){
         customerQueue = store.getCustomerQueue();
 
         customerQueue.add(customer);

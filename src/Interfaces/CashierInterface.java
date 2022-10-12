@@ -1,13 +1,15 @@
 package Interfaces;
 
+import models.Customer;
 import models.Staff;
 import models.Store;
 
+import java.util.Queue;
+
 public interface CashierInterface {
 
-     String sellProductBasedOnQuantity(Store store, Staff staff);
+     String sellProduct(Store store, Staff staff, Queue<Customer> customerQueue);
 
-     String sellProductFIFO(Store store, Staff staff);
 
 
 }

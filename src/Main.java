@@ -47,7 +47,7 @@ public class Main {
 
 
         Customer customer1 = new Customer(1,cartProduct, 100000.0);
-        Customer customer2 = new Customer(2, cartProduct1, 500.0);
+        Customer customer2 = new Customer(2, cartProduct1, 50000.0);
         Customer customer3 = new Customer(3, cartProduct2, 20000.0);
         Customer customer4 = new Customer(4, cartProduct3, 300000.0);
 
@@ -127,25 +127,7 @@ public class Main {
         store1.setCustomerQueue2(custQueue);
 
 
-//        System.out.println(cashier.sellProductBasedOnQuantity(store1, staff2));
-//        System.out.println(cashier.sellProductFIFO(store1, staff2));
-
-
-//        for(Customer queue: store1.getCustomerQueue2()){
-//            System.out.println(queue);
-//        }
-
-        for(Customer queue: store1.getCustomerQueue()){
-            System.out.println(queue);
-        }
-
-
-
-
-        System.out.println("Customer 2 " + customer2.getTotalCartQty());
-        System.out.println("Customer 1 " + customer1.getTotalCartQty());
-        System.out.println("Customer 4 " + customer4.getTotalCartQty());
-        System.out.println("Customer 3 " + customer3.getTotalCartQty());
+        System.out.println(cashier.sellProduct(store1, staff2, customerQueue));
 
 
     }

@@ -106,7 +106,7 @@ class CashierServiceImplTest {
 
         String expected = "Product sold to customer: 2" +  "\n\n" + receipt.printReceipt(store1, staff3, store1.getCustomer());
 
-        assertEquals(expected, cashier.sellProductBasedOnQuantity(store1, staff3));
+        assertEquals(expected, cashier.sellProduct(store1, staff3, customerQueue));
     }
 
     @Test
@@ -199,7 +199,7 @@ class CashierServiceImplTest {
 
         String expected = "Insufficient balance to sell to Customer: 2";
 
-        assertEquals(expected, cashier.sellProductBasedOnQuantity(store1, staff3));
+        assertEquals(expected, cashier.sellProduct(store1, staff3, customerQueue));
     }
 
 
@@ -294,7 +294,7 @@ class CashierServiceImplTest {
 
         String expected = "Product sold to customer: 1";
 
-        assertEquals(expected, cashier.sellProductFIFO(store1, staff3));
+        assertEquals(expected, cashier.sellProduct(store1, staff3, custQueue));
     }
 
     @Test
@@ -387,6 +387,6 @@ class CashierServiceImplTest {
 
         String expected = "Insufficient balance to sell to Customer: 1";
 
-        assertEquals(expected, cashier.sellProductFIFO(store1, staff3));
+        assertEquals(expected, cashier.sellProduct(store1, staff3, custQueue));
     }
 }

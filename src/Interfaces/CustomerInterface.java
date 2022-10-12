@@ -2,11 +2,11 @@ package Interfaces;
 
 import models.*;
 
-import java.util.PriorityQueue;
+import java.util.Queue;
 
 public interface CustomerInterface {
 
      String addToCart(Store store, Item item, Customer customer);
 
-    String joinTheQueue(Store store, Customer customer, PriorityQueue<Customer> customerQueue);
+    String joinTheQueue(Store store, Customer customer, Queue<Customer> customerQueue);
 }
