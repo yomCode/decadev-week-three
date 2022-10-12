@@ -45,4 +45,5 @@ class CustomerServiceImplTest {
         assertEquals(expected, customerService.addToCart(store, item1, customer1));
 
     }
+
 }

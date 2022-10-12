@@ -3,6 +3,8 @@ package services;
 import Interfaces.CustomerInterface;
 import models.*;
 
+import java.util.PriorityQueue;
+
 public class CustomerServiceImpl implements CustomerInterface {
     @Override
     public String addToCart(Store store, Item item, Customer customer){
@@ -30,14 +32,21 @@ public class CustomerServiceImpl implements CustomerInterface {
 
 
     //JOIN THE QUEUE METHOD METHOD OF CUSTOMER------------------------------------------------------------------------------------------->
-    //@Override
-    public void joinTheQueue(Store store, Customer customer){
+    @Override
+    public String joinTheQueue(Store store, Customer customer, PriorityQueue<Customer> customerQueue){
+        customerQueue = store.getCustomerQueue();
 
-//        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(customer);
-//
-//        customerQueue.add(customer);
-//
-//        store.setCustomerQueue(customerQueue);
+        customerQueue.add(customer);
+
+
+        for(int i = 0; i< customerQueue.size(); i++){
+            if(customerQueue.element().getCustomerId().equals(customer.getCustomerId())){
+                return "Queue joined successfully";
+            }
+
+        }
+
+        return "Couldn't join queue";
 
     }
 

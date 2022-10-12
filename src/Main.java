@@ -110,15 +110,15 @@ public class Main {
         LinkedList<Customer> custQueue = new LinkedList<>();
 
         //Adding to priority Queue-----------------------------------------------------------------------------------------------------------------------------
-        customerQueue.add(customer1);
-        customerQueue.add(customer2);
-        customerQueue.add(customer3);
-        customerQueue.add(customer4);
-
         store1.setCustomerQueue(customerQueue);
 
+        customerService.joinTheQueue(store1, customer1, customerQueue);
+        customerService.joinTheQueue(store1, customer2, customerQueue);
+        customerService.joinTheQueue(store1, customer3, customerQueue);
+        customerService.joinTheQueue(store1, customer4, customerQueue);
 
-        //Adding to priority Queue-----------------------------------------------------------------------------------------------------------------------------
+
+        //Adding to LinkedList Queue-----------------------------------------------------------------------------------------------------------------------------
         custQueue.add(customer1);
         custQueue.add(customer2);
         custQueue.add(customer3);
@@ -127,13 +127,13 @@ public class Main {
         store1.setCustomerQueue2(custQueue);
 
 
-        System.out.println(cashier.sellProductBasedOnQuantity(store1, staff2));
-        System.out.println(cashier.sellProductFIFO(store1, staff2));
+//        System.out.println(cashier.sellProductBasedOnQuantity(store1, staff2));
+//        System.out.println(cashier.sellProductFIFO(store1, staff2));
 
 
-        for(Customer queue: store1.getCustomerQueue2()){
-            System.out.println(queue);
-        }
+//        for(Customer queue: store1.getCustomerQueue2()){
+//            System.out.println(queue);
+//        }
 
         for(Customer queue: store1.getCustomerQueue()){
             System.out.println(queue);

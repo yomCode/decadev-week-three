@@ -14,6 +14,7 @@ public class Customer extends Person implements Comparator<Customer> {
     private Integer totalCartQty;
     private Double totalCost;
     private List<Item> purchaseCart;
+    private PriorityQueue queue;
 
 
 
@@ -119,6 +120,14 @@ public class Customer extends Person implements Comparator<Customer> {
 
     public void setPurchaseCart(List<Item> purchaseCart) {
         this.purchaseCart = purchaseCart;
+    }
+
+    public PriorityQueue getQueue() {
+        return queue;
+    }
+
+    public void setQueue(PriorityQueue queue) {
+        this.queue = queue;
     }
 
     @Override
