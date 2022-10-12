@@ -17,7 +17,7 @@ public class CashierServiceImpl implements CashierInterface {
             while(store.getCustomerQueue().iterator().hasNext()) {
                 if (store.getCustomerQueue().element().getCashAvailable() >= store.getCustomerQueue().element().getTotalCost()) {
 
-                    sellStatus += "Product sold to customer" + store.getCustomerQueue().element().getCustomerId() +  "\n\n" + receipt.printReceipt(store, staff, store.getCustomer());
+                    sellStatus += "Product sold to customer: " + store.getCustomerQueue().element().getCustomerId() +  "\n\n" + receipt.printReceipt(store, staff, store.getCustomer());
                     store.getCustomerQueue().remove();
 
                 }else{
@@ -33,6 +33,7 @@ public class CashierServiceImpl implements CashierInterface {
                         }
 
                     }
+                    sellStatus += "Insufficient balance to sell to Customer: " + store.getCustomerQueue().element().getCustomerId() +  "\n\n";
                     store.getCustomerQueue().remove();
                 }
             }

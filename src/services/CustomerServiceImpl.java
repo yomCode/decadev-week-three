@@ -2,19 +2,10 @@ package services;
 
 import Interfaces.CustomerInterface;
 import exceptions.ProductIsNotAvaialbleEception;
-import models.Customer;
-import models.Item;
-import models.Products;
-import models.Store;
+import models.*;
 
-import java.util.List;
 
 public class CustomerServiceImpl implements CustomerInterface {
-
-//    public Double toCartCost(){
-//
-//
-//    }
 
     @Override
     public Products addToCart(Store store, Item item, Customer customer){
@@ -40,31 +31,17 @@ public class CustomerServiceImpl implements CustomerInterface {
 
     //buyProduct METHOD OF CASHIER------------------------------------------------------------------------------------------->
     @Override
-    public String buyProduct(Store store, Customer customer){
-        List<Products> availableProducts = store.getProductsList();
+    public String buyProduct(Store store, Staff staff){
 
-        for(int i = 0; i< availableProducts.size(); i++){
-            //Check if product is available on the available product list------------------------------
-            if(availableProducts.get(i).getProductName().equalsIgnoreCase(customer.getProductName())){
-                //Check if selected product is in stock------------------------------------------------------------------
-                if(availableProducts.get(i).getQuantity() <= 0) return "OUT OF STOCK!";
-                //Check if there is enough quantity to serve the customer's need-----------------------------------------
-                if(availableProducts.get(i).getQuantity() > 0 && availableProducts.get(i).getQuantity() >= customer.getTotalCartQty()){
-                    //Check if customer have enough cash to pay for the product-------------------------------------------
-                    if((availableProducts.get(i).getRatePerUnit()* customer.getTotalCartQty()) <= customer.getCashAvailable()){
 
-                        return "Product purchased successfully";
 
-                    }else{
-                        return "Insufficient balance to complete purchase";
-                    }
 
-                }else{
-                    return "Enter a lower quantity";
-                }
-            }
 
-        }
+
+
+
+
+
         throw new ProductIsNotAvaialbleEception("Product is not available");
     }
 }

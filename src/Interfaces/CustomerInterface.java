@@ -1,13 +1,10 @@
 package Interfaces;
 
-import models.Customer;
-import models.Item;
-import models.Products;
-import models.Store;
+import models.*;
 
 public interface CustomerInterface {
 
-     String buyProduct(Store store, Customer customer);
+     String buyProduct(Store store, Staff staff);
 
      Products addToCart(Store store, Item item, Customer customer);
 

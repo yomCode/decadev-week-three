@@ -2,9 +2,10 @@ package models;
 
 import enums.Qualification;
 import enums.Sex;
+
 import java.util.*;
 
-public class Customer extends Person{
+public class Customer extends Person implements Comparator<Customer> {
 
     //FIELDS------------------------------------------------------------------>
     private String productName;
@@ -130,4 +131,15 @@ public class Customer extends Person{
 
 
 
+    @Override
+    public int compare(Customer o1, Customer o2) {
+        if(o1.getTotalCartQty() > o2.getTotalCartQty()){
+            return -1;
+        }else if(o1.getTotalCartQty() < o2.totalCartQty){
+            return 1;
+        }else{
+            return 0;
+        }
+
+    }
 }

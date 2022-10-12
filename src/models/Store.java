@@ -1,10 +1,9 @@
 package models;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class Store implements Comparator<Customer> {
+public class Store {
     //FIELDS------------------------------------------------------------------>
     private Integer id;
     private String storeName;
@@ -90,12 +89,5 @@ public class Store implements Comparator<Customer> {
                 " productsList=" + productsList;
     }
 
-    @Override
-    public int compare(Customer o1, Customer o2) {
-        if(o1.getTotalCartQty() > o2.getTotalCartQty()) return -1;
-        else if (o1.getTotalCartQty() > o2.getTotalCartQty()) return 1;
-        else
-            return 0;
-    }
 
 }

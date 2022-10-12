@@ -1,14 +1,11 @@
 package models;
 
 import Interfaces.PrintReceiptInterface;
-import enums.Qualification;
 import enums.Role;
-import enums.Sex;
 import services.CustomerServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class PrintReceipt extends Customer implements PrintReceiptInterface{
 
@@ -16,65 +13,10 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
     private  LocalDateTime dateTime;
     private Customer customer;
     private Integer slipNumber;
-    private Products product;
 
     public PrintReceipt(){
 
 
-    }
-
-    public PrintReceipt(LocalDateTime dateTime, Customer customer, Integer slipNumber) {
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
-    }
-
-    public PrintReceipt(LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
-        this.product = product;
-    }
-
-    public PrintReceipt(Double cashPaid, Integer qty, LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
-        super(cashPaid, qty);
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
-        this.product = product;
-    }
-
-    public PrintReceipt(Integer id, String name, Integer age, Sex sex, Qualification qualification, String email, Double cashAvailable, Integer qty, LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
-        super(id, name, age, sex, qualification, email, cashAvailable, qty);
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
-        this.product = product;
-    }
-
-    public PrintReceipt(Integer id, Double cashPaid, Integer qty, LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
-        super(id, cashPaid, qty);
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
-        this.product = product;
-    }
-
-    public PrintReceipt(int id, double cashPaid, String productName, int qty, LocalDateTime dateTime, Customer customer, Integer slipNumber, Products product) {
-        super(id, cashPaid, productName, qty);
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
-        this.product = product;
-    }
-
-
-
-    public PrintReceipt(int id, double cashPaid, String productName, int qty, LocalDateTime dateTime, Customer customer, Integer slipNumber) {
-        super(id, cashPaid, productName, qty);
-        this.dateTime = dateTime;
-        this.customer = customer;
-        this.slipNumber = slipNumber;
     }
 
     public LocalDateTime getDateTime() {
@@ -99,7 +41,6 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
                 "dateTime=" + dateTime +
                 ", customer=" + customer +
                 ", slipNumber=" + slipNumber +
-                ", product=" + product +
                 '}';
     }
 
@@ -119,7 +60,7 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
                             String itemName = store.getCustomerQueue().element().getPurchaseCart().get(i).getItemName();
                             Integer itemQty = store.getCustomerQueue().element().getPurchaseCart().get(i).getItemQty();
                             Double itemPrice = store.getCustomerQueue().element().getPurchaseCart().get(i).getPrice();
-                            items += "Item: " + itemName + "   itemQty: " + itemQty + "   Price: " + itemPrice + "\n";
+                            items += "Item: " + itemName + "   itemQty: " + itemQty + "    Price: " + itemPrice + "\n";
                         }
 
 

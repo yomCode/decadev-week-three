@@ -7,14 +7,12 @@ import services.CashierServiceImpl;
 import services.CustomerServiceImpl;
 import services.ManagerServiceImpl;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.PriorityQueue;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         //Instances of a staff Class------------------------------------------------------------------------------------------->
         Staff staff1 = new Staff( 12,"Hakeem Adewale", 45, Sex.MALE, Qualification.MSC, "Adewale@gmail.com", Role.MANAGER);
@@ -48,7 +46,7 @@ public class Main {
 
 
         Customer customer1 = new Customer(1,cartProduct, 100000.0);
-        Customer customer2 = new Customer(2, cartProduct1, 50000.0);
+        Customer customer2 = new Customer(2, cartProduct1, 500.0);
         Customer customer3 = new Customer(3, cartProduct2, 20000.0);
         Customer customer4 = new Customer(4, cartProduct3, 300000.0);
 
@@ -106,7 +104,7 @@ public class Main {
         customer3.setPurchaseCart(cartProduct2);
 
         //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
-        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(store1);
+        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(customer1);
 
 
         customerQueue.add(customer1);
@@ -118,20 +116,14 @@ public class Main {
 
 
 
-//        for(Products product : store1.getProductsList()){
-//            System.out.println(product);
-//        }
 
 
         System.out.println(cashier.sellProduct(store1, staff2));
 
-//        for(Customer queue: store1.getCustomerQueue()){
-//            System.out.println(queue);
-//        }
+        for(Customer queue: store1.getCustomerQueue()){
+            System.out.println(queue);
+        }
 
-//        for(Products product : store1.getProductsList()){
-//            System.out.println(product);
-//        }
 
         System.out.println("Customer 2 " + customer2.getTotalCartQty());
         System.out.println("Customer 1 " + customer1.getTotalCartQty());
