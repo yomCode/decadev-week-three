@@ -8,6 +8,7 @@ import services.CustomerServiceImpl;
 import services.ManagerServiceImpl;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 
@@ -106,8 +107,9 @@ public class Main {
 
         //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
         PriorityQueue<Customer> customerQueue = new PriorityQueue<>(customer1);
+        LinkedList<Customer> custQueue = new LinkedList<>();
 
-
+        //Adding to priority Queue-----------------------------------------------------------------------------------------------------------------------------
         customerQueue.add(customer1);
         customerQueue.add(customer2);
         customerQueue.add(customer3);
@@ -116,15 +118,28 @@ public class Main {
         store1.setCustomerQueue(customerQueue);
 
 
+        //Adding to priority Queue-----------------------------------------------------------------------------------------------------------------------------
+        custQueue.add(customer1);
+        custQueue.add(customer2);
+        custQueue.add(customer3);
+        custQueue.add(customer4);
+
+        store1.setCustomerQueue2(custQueue);
 
 
+        System.out.println(cashier.sellProductBasedOnQuantity(store1, staff2));
+        System.out.println(cashier.sellProductFIFO(store1, staff2));
 
-        System.out.println(cashier.sellProduct(store1, staff2));
 
+        for(Customer queue: store1.getCustomerQueue2()){
+            System.out.println(queue);
+        }
 
         for(Customer queue: store1.getCustomerQueue()){
             System.out.println(queue);
         }
+
+
 
 
         System.out.println("Customer 2 " + customer2.getTotalCartQty());

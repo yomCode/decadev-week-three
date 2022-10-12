@@ -1,5 +1,6 @@
 package models;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -10,6 +11,7 @@ public class Store {
     private List<Staff> staffList;
     private List<Products> productsList;
     private PriorityQueue<Customer> customerQueue;
+    private LinkedList<Customer> customerQueue2;
     private Customer customer;
 
 
@@ -78,6 +80,14 @@ public class Store {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public LinkedList<Customer> getCustomerQueue2() {
+        return customerQueue2;
+    }
+
+    public void setCustomerQueue2(LinkedList<Customer> customerQueue2) {
+        this.customerQueue2 = customerQueue2;
     }
 
     @Override
