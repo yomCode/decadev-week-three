@@ -1,12 +1,11 @@
 package services;
 
 import Interfaces.CustomerInterface;
-import exceptions.ProductIsNotAvaialbleEception;
 import models.*;
 
 public class CustomerServiceImpl implements CustomerInterface {
     @Override
-    public Products addToCart(Store store, Item item, Customer customer){
+    public String addToCart(Store store, Item item, Customer customer){
         //Loop through the Product list to search for available products using the name ot the product--------------------------------
         for(int i = 0; i< store.getProductsList().size(); i++){
             Products eachProduct = store.getProductsList().get(i);
@@ -20,26 +19,26 @@ public class CustomerServiceImpl implements CustomerInterface {
                 // the next customer does select out of stock product----------------------------------------------------
                 eachProduct.setQuantity(eachProduct.getQuantity() - item.getItemQty());
 
+                return eachProduct.getProductName() + " added to cart successfully";
+
             }
+
         }
 
-        return null;
+        return "Product is currently unavailable";
     }
 
 
-    //buyProduct METHOD OF CASHIER------------------------------------------------------------------------------------------->
-    @Override
-    public String buyProduct(Store store, Staff staff){
+    //JOIN THE QUEUE METHOD METHOD OF CUSTOMER------------------------------------------------------------------------------------------->
+    //@Override
+    public void joinTheQueue(Store store, Customer customer){
 
+//        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(customer);
+//
+//        customerQueue.add(customer);
+//
+//        store.setCustomerQueue(customerQueue);
 
-
-
-
-
-
-
-
-
-        throw new ProductIsNotAvaialbleEception("Product is not available");
     }
+
 }

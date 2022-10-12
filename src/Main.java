@@ -86,7 +86,7 @@ public class Main {
         customerService.addToCart(store1, item11, customer3);
         customerService.addToCart(store1, item12, customer3);
 
-        Item item13 = new Item("5alive", 25);
+        Item item13 = new Item("5alive", 120);
         Item item14 = new Item("monster", 10);
         Item item15 = new Item("milk", 5);
         Item item16 = new Item("peeler", 1);
@@ -102,6 +102,7 @@ public class Main {
         customer1.setPurchaseCart(cartProduct);
         customer2.setPurchaseCart(cartProduct1);
         customer3.setPurchaseCart(cartProduct2);
+        customer4.setPurchaseCart(cartProduct3);
 
         //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
         PriorityQueue<Customer> customerQueue = new PriorityQueue<>(customer1);
@@ -119,6 +120,7 @@ public class Main {
 
 
         System.out.println(cashier.sellProduct(store1, staff2));
+
 
         for(Customer queue: store1.getCustomerQueue()){
             System.out.println(queue);

@@ -4,8 +4,7 @@ import models.*;
 
 public interface CustomerInterface {
 
-     String buyProduct(Store store, Staff staff);
+     String addToCart(Store store, Item item, Customer customer);
 
-     Products addToCart(Store store, Item item, Customer customer);
-
+//     void joinTheQueue(Store store, Customer customer);
 }

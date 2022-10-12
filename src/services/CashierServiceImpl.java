@@ -14,7 +14,6 @@ public class CashierServiceImpl implements CashierInterface {
         String sellStatus = "";
 
         if(staff.getRole().equals(Role.CASHIER)){
-            while(store.getCustomerQueue().iterator().hasNext()) {
                 if (store.getCustomerQueue().element().getCashAvailable() >= store.getCustomerQueue().element().getTotalCost()) {
 
                     sellStatus += "Product sold to customer: " + store.getCustomerQueue().element().getCustomerId() +  "\n\n" + receipt.printReceipt(store, staff, store.getCustomer());
@@ -33,10 +32,9 @@ public class CashierServiceImpl implements CashierInterface {
                         }
 
                     }
-                    sellStatus += "Insufficient balance to sell to Customer: " + store.getCustomerQueue().element().getCustomerId() +  "\n\n";
+                    sellStatus += "Insufficient balance to sell to Customer: " + store.getCustomerQueue().element().getCustomerId();
                     store.getCustomerQueue().remove();
                 }
-            }
 
         }else{
             throw new AccessDenialException("Access Denied!");
