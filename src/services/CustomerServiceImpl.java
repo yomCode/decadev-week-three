@@ -4,9 +4,7 @@ import Interfaces.CustomerInterface;
 import exceptions.ProductIsNotAvaialbleEception;
 import models.*;
 
-
 public class CustomerServiceImpl implements CustomerInterface {
-
     @Override
     public Products addToCart(Store store, Item item, Customer customer){
         //Loop through the Product list to search for available products using the name ot the product--------------------------------

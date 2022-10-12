@@ -11,7 +11,6 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
 
     //FIELDS-------------------------------------------------------------------------->
     private  LocalDateTime dateTime;
-    private Customer customer;
     private Integer slipNumber;
 
     public PrintReceipt(){
@@ -39,14 +38,12 @@ public class PrintReceipt extends Customer implements PrintReceiptInterface{
     public String toString() {
         return "PrintReceipt{" +
                 "dateTime=" + dateTime +
-                ", customer=" + customer +
                 ", slipNumber=" + slipNumber +
                 '}';
     }
 
     @Override
     public  String printReceipt(Store store, Staff staff, Customer customer){
-        CustomerServiceImpl customerService = new CustomerServiceImpl();
         LocalDate dateTime = LocalDate.now();
         slipNumber = 0; //(int) (Math.random() * 1_000_000);
 
