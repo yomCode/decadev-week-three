@@ -82,6 +82,9 @@ public class Customer extends Person implements Comparator<Customer> {
         return cashAvailable;
     }
 
+    public void setCashAvailable(Double cashAvailable) {
+        this.cashAvailable = cashAvailable;
+    }
 
     public Integer getTotalCartQty() {
         totalCartQty = 0;
