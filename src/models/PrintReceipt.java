@@ -2,8 +2,6 @@ package models;
 
 import Interfaces.PrintReceiptInterface;
 import enums.Role;
-import services.CustomerServiceImpl;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

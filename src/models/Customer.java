@@ -2,7 +2,6 @@ package models;
 
 import enums.Qualification;
 import enums.Sex;
-
 import java.util.*;
 
 public class Customer extends Person implements Comparator<Customer> {
