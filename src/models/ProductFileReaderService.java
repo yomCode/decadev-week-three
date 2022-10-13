@@ -15,7 +15,7 @@ public class ProductFileReaderService implements ProductFileReaderInterface {
 
        String line;
        try{
-           FileReader file = new FileReader("ProductList.csv");
+           FileReader file = new FileReader("src/resources/ProductList.csv");
            BufferedReader read = new BufferedReader(file);
 
            while((line = read.readLine()) != null){
