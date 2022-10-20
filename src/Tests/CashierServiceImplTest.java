@@ -16,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CashierServiceImplTest {
 
+
+
+
     @Test
     void sellProductSuccessfulBasedOnQuantity() {
         Store store1 = new Store();

@@ -106,28 +106,35 @@ public class Main {
         customer4.setPurchaseCart(cartProduct3);
 
         //Adding the customers to Priority Queue which is a field in the Store entity (Position in the queue is determined by the number of total quantity)---
-        PriorityQueue<Customer> customerQueue = new PriorityQueue<>(customer1);
-        LinkedList<Customer> custQueue = new LinkedList<>();
+        PriorityQueue<Customer> priorityQueue = new PriorityQueue<>(customer1);
+        LinkedList<Customer> queue = new LinkedList<>();
 
         //Adding to priority Queue-----------------------------------------------------------------------------------------------------------------------------
-        store1.setCustomerQueue(customerQueue);
+        store1.setCustomerQueue(priorityQueue);
 
-        customerService.joinTheQueue(store1, customer1, customerQueue);
-        customerService.joinTheQueue(store1, customer2, customerQueue);
-        customerService.joinTheQueue(store1, customer3, customerQueue);
-        customerService.joinTheQueue(store1, customer4, customerQueue);
+        customerService.joinTheQueue(store1, customer1, priorityQueue);
+        customerService.joinTheQueue(store1, customer2, priorityQueue);
+        customerService.joinTheQueue(store1, customer3, priorityQueue);
+        customerService.joinTheQueue(store1, customer4, priorityQueue);
 
 
         //Adding to LinkedList Queue-----------------------------------------------------------------------------------------------------------------------------
-        custQueue.add(customer1);
-        custQueue.add(customer2);
-        custQueue.add(customer3);
-        custQueue.add(customer4);
+        queue.add(customer1);
+        queue.add(customer2);
+        queue.add(customer3);
+        queue.add(customer4);
 
-        store1.setCustomerQueue2(custQueue);
+        store1.setCustomerQueue2(queue);
 
 
-        System.out.println(cashier.sellProduct(store1, staff2, customerQueue));
+        System.out.println(cashier.sellProduct(store1, staff2, priorityQueue));
+//        System.out.println(cashier.sellProduct(store1, staff2, priorityQueue));
+
+
+        System.out.println(customer1.getTotalCartQty());
+        System.out.println(customer2.getTotalCartQty());
+        System.out.println(customer3.getTotalCartQty());
+        System.out.println(customer4.getTotalCartQty());
 
 
     }

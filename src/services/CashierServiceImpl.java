@@ -46,6 +46,7 @@ public class CashierServiceImpl implements CashierInterface {
                 for(int i = 0; i< store.getCustomerQueue2().size(); i++){
                     Customer eachCustomer = store.getCustomerQueue2().get(i);
                     if (eachCustomer.getCashAvailable() >= eachCustomer.getTotalCost()) {
+                        eachCustomer.setCashAvailable(eachCustomer.getCashAvailable() - eachCustomer.getTotalCost());
 
                         sellStatus += "Product sold to customer: " + eachCustomer.getCustomerId();
                         store.getCustomerQueue2().remove();
